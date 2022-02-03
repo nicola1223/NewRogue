@@ -1,3 +1,3 @@
 # NewRogue
  
-Наш рогалик
+Our RogueLike game
