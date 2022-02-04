@@ -1,4 +1,7 @@
 # NewRogue
  
 Our RogueLike game
-My additions
+
+New
+New
+New
