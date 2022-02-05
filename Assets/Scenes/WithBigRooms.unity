@@ -383,11 +383,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPrefabs:
-  - {fileID: 6399129498480650162, guid: 5e943da8617720f4e9743c2f45621a9e, type: 3}
-  - {fileID: 7595405452613660752, guid: 65fde9a95700ca34994d5467c631d4e0, type: 3}
+  - {fileID: 5049293546911735880, guid: 65fde9a95700ca34994d5467c631d4e0, type: 3}
   StartingRoom: {fileID: 1564177254}
-  HeshLen: 11
-  RoomsCount: 13
+  HeshLen: 25
+  RoomsCount: 11
   RoomsToPlayer: []
 --- !u!4 &1205824161
 Transform:

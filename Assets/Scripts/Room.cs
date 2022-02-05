@@ -101,51 +101,51 @@ public class Room : MonoBehaviour
         size = new Vector2(floor.localScale.x, floor.localScale.z);
     }
 
-    void Start()
-    {
-        if (Random.value < 0.7f)
-        {
-            isFree = false;
-        }
-        else
-        {
-            isFree = true;
-        }
-        Debug.Log(isFree);
-        StartCoroutine(SetMap());
-    }
+    //void Start()
+    //{
+    //    if (Random.value < 0.7f)
+    //    {
+    //        isFree = false;
+    //    }
+    //    else
+    //    {
+    //        isFree = true;
+    //    }
+    //    Debug.Log(isFree);
+    //    StartCoroutine(SetMap());
+    //}
 
-    private void Update()
-    {
-        if (Activated)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                isFree = !isFree;
-            }
-            if (isFree)
-            {
-                DoorD.SetActive(DoorD_Active);
-                DoorU.SetActive(DoorU_Active);
-                DoorR.SetActive(DoorR_Active);
-                DoorL.SetActive(DoorL_Active);
-            }
-            else
-            {
-                DoorD.SetActive(true);
-                DoorU.SetActive(true);
-                DoorR.SetActive(true);
-                DoorL.SetActive(true);
-            }
-        }
-        else
-        {
-            DoorD.SetActive(false);
-            DoorU.SetActive(false);
-            DoorR.SetActive(false);
-            DoorL.SetActive(false);
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Activated)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.Space))
+    //        {
+    //            isFree = !isFree;
+    //        }
+    //        if (isFree)
+    //        {
+    //            DoorD.SetActive(DoorD_Active);
+    //            DoorU.SetActive(DoorU_Active);
+    //            DoorR.SetActive(DoorR_Active);
+    //            DoorL.SetActive(DoorL_Active);
+    //        }
+    //        else
+    //        {
+    //            DoorD.SetActive(true);
+    //            DoorU.SetActive(true);
+    //            DoorR.SetActive(true);
+    //            DoorL.SetActive(true);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        DoorD.SetActive(false);
+    //        DoorU.SetActive(false);
+    //        DoorR.SetActive(false);
+    //        DoorL.SetActive(false);
+    //    }
+    //}
 
     public void SetActive(bool active)
     {
@@ -202,17 +202,47 @@ public class Room : MonoBehaviour
             transform.Rotate(0, 90, 0);
             camera.RotateAround(transform.position, new Vector3(0, 1, 0), -90);
 
-            GameObject tmp = DoorL;
-            DoorL = DoorD;
-            DoorD = DoorR;
-            DoorR = DoorU;
-            DoorU = tmp;
+            switch (Type)
+            {
+                case RoomType.Default:
+                    GameObject tmp = DoorL;
+                    DoorL = DoorD;
+                    DoorD = DoorR;
+                    DoorR = DoorU;
+                    DoorU = tmp;
 
-            GameObject tmp1 = DoorLMap;
-            DoorLMap = DoorDMap;
-            DoorDMap = DoorRMap;
-            DoorRMap = DoorUMap;
-            DoorUMap = tmp1;
+                    GameObject tmp1 = DoorLMap;
+                    DoorLMap = DoorDMap;
+                    DoorDMap = DoorRMap;
+                    DoorRMap = DoorUMap;
+                    DoorUMap = tmp1;
+
+                    break;
+                case RoomType.BigRoom:
+                    GameObject tmpbU = DoorLU;
+                    GameObject tmpbD = DoorLD;
+                    DoorLU = DoorDR;
+                    DoorLD = DoorDL;
+                    DoorDL = DoorRD;
+                    DoorDR = DoorRU;
+                    DoorRD = DoorUR;
+                    DoorRU = DoorUL;
+                    DoorUR = tmpbU;
+                    DoorUL = tmpbD;
+
+                    GameObject tmpbU1 = DoorLUMap;
+                    GameObject tmpbD1 = DoorLDMap;
+                    DoorLUMap = DoorDRMap;
+                    DoorLDMap = DoorDLMap;
+                    DoorDLMap = DoorRDMap;
+                    DoorDRMap = DoorRUMap;
+                    DoorRDMap = DoorURMap;
+                    DoorRUMap = DoorULMap;
+                    DoorURMap = tmpbU1;
+                    DoorULMap = tmpbD1;
+
+                    break;
+            }
         }
     }
 

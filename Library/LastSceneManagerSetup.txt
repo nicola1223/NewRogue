@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Isaac.unity
+- path: Assets/Scenes/WithBigRooms.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
