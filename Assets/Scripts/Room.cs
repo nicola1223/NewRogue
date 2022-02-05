@@ -115,81 +115,81 @@ public class Room : MonoBehaviour
         StartCoroutine(SetMap());
     }
 
-    //private void Update()
-    //{
-    //    if (Activated)
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.Space))
-    //        {
-    //            isFree = !isFree;
-    //        }
-    //        if (isFree)
-    //        {
-    //            DoorD.SetActive(DoorD_Active);
-    //            DoorU.SetActive(DoorU_Active);
-    //            DoorR.SetActive(DoorR_Active);
-    //            DoorL.SetActive(DoorL_Active);
-    //        }
-    //        else
-    //        {
-    //            DoorD.SetActive(true);
-    //            DoorU.SetActive(true);
-    //            DoorR.SetActive(true);
-    //            DoorL.SetActive(true);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        DoorD.SetActive(false);
-    //        DoorU.SetActive(false);
-    //        DoorR.SetActive(false);
-    //        DoorL.SetActive(false);
-    //    }
-    //}
+    private void Update()
+    {
+        if (Activated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isFree = !isFree;
+            }
+            if (isFree)
+            {
+                DoorD.SetActive(DoorD_Active);
+                DoorU.SetActive(DoorU_Active);
+                DoorR.SetActive(DoorR_Active);
+                DoorL.SetActive(DoorL_Active);
+            }
+            else
+            {
+                DoorD.SetActive(true);
+                DoorU.SetActive(true);
+                DoorR.SetActive(true);
+                DoorL.SetActive(true);
+            }
+        }
+        else
+        {
+            DoorD.SetActive(false);
+            DoorU.SetActive(false);
+            DoorR.SetActive(false);
+            DoorL.SetActive(false);
+        }
+    }
 
-    //public void SetActive(bool active)
-    //{
-    //    Activated = active;
-    //    GameObject camera = gameObject.transform.Find("RoomCamera").gameObject;
-    //    if (active)
-    //    {
-    //        DoorD.SetActive(DoorD_Active);
-    //        DoorU.SetActive(DoorU_Active);
-    //        DoorR.SetActive(DoorR_Active);
-    //        DoorL.SetActive(DoorL_Active);
-    //        for (int i = 0; i < transform.childCount; i++)
-    //        {
-    //            GameObject child = gameObject.transform.GetChild(i).gameObject;
-    //            if (child.tag != "trigger" && child != camera && child != DoorD && child != DoorL && child != DoorR && child != DoorU && child.tag != "Map") 
-    //            {
-    //                gameObject.transform.GetChild(i).gameObject.SetActive(active);
-    //            }
-    //            else if (child.tag == "trigger")
-    //            {
-    //                child.SetActive(false);
-    //            }
-    //        }
-    //        camera.SetActive(active);
-    //        Map.GetComponent<Renderer>().material = activeMat;
-    //    }
-    //    else
-    //    {
-    //        for (int i = 0; i < transform.childCount; i++)
-    //        {
-    //            GameObject child = gameObject.transform.GetChild(i).gameObject;
-    //            if (child.tag != "trigger" && child != camera && child.tag != "Map")
-    //            {
-    //                gameObject.transform.GetChild(i).gameObject.SetActive(active);
-    //            }
-    //            else if (child.tag == "trigger")
-    //            {
-    //                child.SetActive(true);
-    //            }
-    //        }
-    //        camera.SetActive(active);
-    //        Map.GetComponent<Renderer>().material = defaultMat;
-    //    }
-    //}
+    public void SetActive(bool active)
+    {
+        Activated = active;
+        GameObject camera = gameObject.transform.Find("RoomCamera").gameObject;
+        if (active)
+        {
+            DoorD.SetActive(DoorD_Active);
+            DoorU.SetActive(DoorU_Active);
+            DoorR.SetActive(DoorR_Active);
+            DoorL.SetActive(DoorL_Active);
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                GameObject child = gameObject.transform.GetChild(i).gameObject;
+                if (child.tag != "trigger" && child != camera && child != DoorD && child != DoorL && child != DoorR && child != DoorU && child.tag != "Map")
+                {
+                    gameObject.transform.GetChild(i).gameObject.SetActive(active);
+                }
+                else if (child.tag == "trigger")
+                {
+                    child.SetActive(false);
+                }
+            }
+            camera.SetActive(active);
+            Map.GetComponent<Renderer>().material = activeMat;
+        }
+        else
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                GameObject child = gameObject.transform.GetChild(i).gameObject;
+                if (child.tag != "trigger" && child != camera && child.tag != "Map")
+                {
+                    gameObject.transform.GetChild(i).gameObject.SetActive(active);
+                }
+                else if (child.tag == "trigger")
+                {
+                    child.SetActive(true);
+                }
+            }
+            camera.SetActive(active);
+            Map.GetComponent<Renderer>().material = defaultMat;
+        }
+    }
 
     public void RotateRandomly()
     {

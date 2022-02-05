@@ -384,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomPrefabs:
   - {fileID: 6399129498480650162, guid: 5e943da8617720f4e9743c2f45621a9e, type: 3}
-  - {fileID: 6399129498480650162, guid: 7ce7a5294cea9d346bee398f133389a0, type: 3}
+  - {fileID: 7595405452613660752, guid: 65fde9a95700ca34994d5467c631d4e0, type: 3}
   StartingRoom: {fileID: 1564177254}
   HeshLen: 11
   RoomsCount: 13

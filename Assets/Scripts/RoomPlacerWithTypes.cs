@@ -52,34 +52,43 @@ public class RoomPlacerWithTypes : MonoBehaviour
         int limit = 500;
         while (limit-- > 0)
         {
-            // Эту строчку можно заменить на выбор положения комнаты с учётом того насколько он далеко/близко от центра,
-            // или сколько у него соседей, чтобы генерировать более плотные, или наоборот, растянутые данжи
-            Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
-            newRoom.RotateRandomly();
-
-            if (ConnectToSomething(newRoom, position))
+            switch (newRoom.Type)
             {
-                //float posX = (position.x - ((int)HeshLen / 2)) * (newRoom.size.x - 0.5f);
-                //float posY = (position.y - ((int)HeshLen / 2)) * (newRoom.size.y - 0.5f);
-                Vector3 pos = TryToLocate(position, newRoom);
+                case Room.RoomType.Default:
+                    // Эту строчку можно заменить на выбор положения комнаты с учётом того насколько он далеко/близко от центра,
+                    // или сколько у него соседей, чтобы генерировать более плотные, или наоборот, растянутые данжи
+                    Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
+                    newRoom.RotateRandomly();
 
-                if (pos.x != 100 || pos.y != 100)
-                {
-                    newRoom.transform.position = pos;
-                }
-                else continue;
+                    if (DefaultConnectToSomething(newRoom, position))
+                    {
+                        float posX = (position.x - ((int)HeshLen / 2)) * (newRoom.size.x - 0.5f);
+                        float posY = (position.y - ((int)HeshLen / 2)) * (newRoom.size.y - 0.5f);
+                        //Vector3 pos = TryToLocate(position, newRoom);
 
-                //newRoom.transform.position = new Vector3(posX, 0, posY);
-                spawnedRooms[position.x, position.y] = newRoom;
-                RoomsToPlayer[i] = newRoom;
-                return;
+                        //if (pos.x != 100 || pos.y != 100)
+                        //{
+                        newRoom.transform.position = new Vector3(posX, 0, posY);
+                        //}
+                        //else break;
+
+                        //newRoom.transform.position = new Vector3(posX, 0, posY);
+                        spawnedRooms[position.x, position.y] = newRoom;
+                        RoomsToPlayer[i] = newRoom;
+                        return;
+                    }
+                    break;
+                case Room.RoomType.BigRoom:
+                    //Destroy(newRoom.gameObject);
+
+                    break;
             }
         }
 
         Destroy(newRoom.gameObject);
     }
 
-    private bool ConnectToSomething(Room room, Vector2Int p)
+    private bool DefaultConnectToSomething(Room room, Vector2Int p)
     {
         int maxX = spawnedRooms.GetLength(0) - 1;
         int maxY = spawnedRooms.GetLength(1) - 1;

@@ -35,14 +35,14 @@ public class PlayerLogic : MonoBehaviour
         Room curRoom = other.gameObject.GetComponentInParent<Room>();
         if (curRoom)
         {
-            //curRoom.SetActive(true);
-            //foreach (Room room in rooms)
-            //{
-            //    if (room != curRoom)
-            //    {
-            //        room.SetActive(false);
-            //    }
-            //}
+            curRoom.SetActive(true);
+            foreach (Room room in rooms)
+            {
+                if (room != curRoom)
+                {
+                    room.SetActive(false);
+                }
+            }
         }
         MapCamera.GetComponent<MoveMap>().target = new Vector3(pos.x, MapCamera.position.y, pos.z);
         transform.position += dir / 2;
