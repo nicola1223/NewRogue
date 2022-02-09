@@ -52,14 +52,31 @@ public class Room : MonoBehaviour
     [HideInInspector]
     public GameObject DoorRD;
 
-    [HideInInspector]
-    public bool DoorU_Active = true;
-    [HideInInspector]
-    public bool DoorD_Active = true;
-    [HideInInspector]
-    public bool DoorL_Active = true;
-    [HideInInspector]
-    public bool DoorR_Active = true;
+    //[HideInInspector]
+    //public bool DoorU_Active = true;
+    //[HideInInspector]
+    //public bool DoorD_Active = true;
+    //[HideInInspector]
+    //public bool DoorL_Active = true;
+    //[HideInInspector]
+    //public bool DoorR_Active = true;
+
+    //[HideInInspector]
+    //public bool DoorUR_Active = true;
+    //[HideInInspector]
+    //public bool DoorDR_Active = true;
+    //[HideInInspector]
+    //public bool DoorLU_Active = true;
+    //[HideInInspector]
+    //public bool DoorRU_Active = true;
+    //[HideInInspector]
+    //public bool DoorUL_Active = true;
+    //[HideInInspector]
+    //public bool DoorDL_Active = true;
+    //[HideInInspector]
+    //public bool DoorLD_Active = true;
+    //[HideInInspector]
+    //public bool DoorRD_Active = true;
 
     [Space]
     [Space]
@@ -101,51 +118,51 @@ public class Room : MonoBehaviour
         size = new Vector2(floor.localScale.x, floor.localScale.z);
     }
 
-    void Start()
-    {
-        if (Random.value < 0.7f)
-        {
-            isFree = false;
-        }
-        else
-        {
-            isFree = true;
-        }
-        Debug.Log(isFree);
-        StartCoroutine(SetMap());
-    }
+    //void Start()
+    //{
+    //    if (Random.value < 0.9f)
+    //    {
+    //        isFree = false;
+    //    }
+    //    else
+    //    {
+    //        isFree = true;
+    //    }
+    //    // Debug.Log(isFree);
+    //    StartCoroutine(SetMap());
+    //}
 
-    private void Update()
-    {
-        if (Activated)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                isFree = !isFree;
-            }
-            if (isFree)
-            {
-                DoorD.SetActive(DoorD_Active);
-                DoorU.SetActive(DoorU_Active);
-                DoorR.SetActive(DoorR_Active);
-                DoorL.SetActive(DoorL_Active);
-            }
-            else
-            {
-                DoorD.SetActive(true);
-                DoorU.SetActive(true);
-                DoorR.SetActive(true);
-                DoorL.SetActive(true);
-            }
-        }
-        else
-        {
-            DoorD.SetActive(false);
-            DoorU.SetActive(false);
-            DoorR.SetActive(false);
-            DoorL.SetActive(false);
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Activated)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.Space))
+    //        {
+    //            isFree = !isFree;
+    //        }
+    //        if (isFree)
+    //        {
+    //            DoorD.SetActive(DoorD_Active);
+    //            DoorU.SetActive(DoorU_Active);
+    //            DoorR.SetActive(DoorR_Active);
+    //            DoorL.SetActive(DoorL_Active);
+    //        }
+    //        else
+    //        {
+    //            DoorD.SetActive(true);
+    //            DoorU.SetActive(true);
+    //            DoorR.SetActive(true);
+    //            DoorL.SetActive(true);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        DoorD.SetActive(false);
+    //        DoorU.SetActive(false);
+    //        DoorR.SetActive(false);
+    //        DoorL.SetActive(false);
+    //    }
+    //}
 
     public void SetActive(bool active)
     {
@@ -153,10 +170,10 @@ public class Room : MonoBehaviour
         GameObject camera = gameObject.transform.Find("RoomCamera").gameObject;
         if (active)
         {
-            DoorD.SetActive(DoorD_Active);
-            DoorU.SetActive(DoorU_Active);
-            DoorR.SetActive(DoorR_Active);
-            DoorL.SetActive(DoorL_Active);
+            DoorD.SetActive(DoorD.GetComponent<Door>().DoorActive);
+            DoorU.SetActive(DoorU.GetComponent<Door>().DoorActive);
+            DoorR.SetActive(DoorR.GetComponent<Door>().DoorActive);
+            DoorL.SetActive(DoorL.GetComponent<Door>().DoorActive);
             for (int i = 0; i < transform.childCount; i++)
             {
                 GameObject child = gameObject.transform.GetChild(i).gameObject;
@@ -219,9 +236,16 @@ public class Room : MonoBehaviour
     IEnumerator SetMap()
     {
         yield return new WaitForSecondsRealtime(0.1f);
-        DoorDMap.SetActive(!DoorD_Active);
-        DoorUMap.SetActive(!DoorU_Active);
-        DoorRMap.SetActive(!DoorR_Active);
-        DoorLMap.SetActive(!DoorL_Active);
+        switch (Type)
+        {
+            case RoomType.Default:
+                DoorDMap.SetActive(!DoorD.GetComponent<Door>().DoorActive);
+                DoorUMap.SetActive(!DoorU.GetComponent<Door>().DoorActive);
+                DoorRMap.SetActive(!DoorR.GetComponent<Door>().DoorActive);
+                DoorLMap.SetActive(!DoorL.GetComponent<Door>().DoorActive);
+                break;
+            case RoomType.BigRoom:
+                break;
+        }
     }
 }

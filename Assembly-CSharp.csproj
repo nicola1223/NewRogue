@@ -56,10 +56,13 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Completed Scripts\Door.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\ChunkPlacer.cs" />
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\Room.cs" />
+    <Compile Include="Assets\Scripts\Completed Scripts\LevelBuilder.cs" />
+    <Compile Include="Assets\Scripts\Completed Scripts\CompletedRoom.cs" />
     <Compile Include="Assets\Scripts\EditorRoom.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerLogicNew.cs" />
@@ -67,8 +70,9 @@
     <Compile Include="Assets\Scripts\SelectRandomChildrens.cs" />
     <Compile Include="Assets\Scripts\DestroyWithChance.cs" />
     <Compile Include="Assets\Scripts\RoomPlacerWithTypes.cs" />
-    <Compile Include="Assets\Scripts\MoveMap.cs" />
+    <Compile Include="Assets\Scripts\Completed Scripts\MoveMap.cs" />
     <Compile Include="Assets\Scripts\RoomPlacer.cs" />
+    <Compile Include="Assets\Scripts\Completed Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
