@@ -535,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &875249251488485013
 Transform:
   m_ObjectHideFlags: 0
@@ -2496,6 +2496,7 @@ MonoBehaviour:
   defaultMat: {fileID: 2100000, guid: 6db88f3ac9e7e464781d50bc2112f227, type: 2}
   isFree: 0
   Activated: 0
+  unclocked: 0
 --- !u!1 &7638028353728984954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,7 +2572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7920201541993664426}
   m_LocalRotation: {x: 0.56496704, y: 0, z: 0, w: 0.82511353}
-  m_LocalPosition: {x: 0, y: 13.73, z: -4.01}
+  m_LocalPosition: {x: 0, y: 14, z: -4.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6399129498480650163}

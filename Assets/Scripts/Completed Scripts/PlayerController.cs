@@ -5,6 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10; // Скорость персонажа
+    // Ускорение
+    public float speed_shift = 100; // Скорость ускорения
+    private float lasttime = 0; // Последнее время для таймера
+    public float cooldown = 2; // Время для кулдауна ускорения
+    public ParticleSystem ps;
+    // Ускорение
     public MoveMap MapCamera; // Скрипт камеры для карты
     public LevelBuilder lb; // Для получения списка всех комнат
 
@@ -20,14 +26,26 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        var cur_speed = speed;
         float h = Input.GetAxis("Horizontal"); // Получаем ввод по горизонтали
         float v = Input.GetAxis("Vertical"); // Получаем ввод по вертикали
         Vector3 movement = new Vector3(h, 0f, v);
+        
         if (lastMovement != movement)
         {
             lastMovement = movement.normalized;
         }
-        rb.velocity = movement * speed; // Присваиваем скорость RigidBody
+        rb.velocity = movement * cur_speed; // Присваиваем скорость RigidBody
+        // Если пробел ускорение
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (Time.realtimeSinceStartup - lasttime >= cooldown)
+            {
+                ps.Play();
+                rb.AddForce(movement.normalized * speed_shift, ForceMode.Impulse);
+                lasttime = Time.realtimeSinceStartup;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other) // При входе в комнату мы задеваем триггер

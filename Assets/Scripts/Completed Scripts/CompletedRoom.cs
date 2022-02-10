@@ -69,7 +69,7 @@ public class CompletedRoom : MonoBehaviour
                 if (Activated) // Если в ней сейчас игрок
                 {
                     // Пробел - открыть комнаты (временно)
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
                     {
                         isFree = true;
                     }

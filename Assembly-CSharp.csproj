@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Completed Scripts\Door.cs" />
+    <Compile Include="Assets\Scripts\Completed Scripts\PlayerController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\ChunkPlacer.cs" />
     <Compile Include="Assets\Scripts\Chunk.cs" />
@@ -72,7 +73,7 @@
     <Compile Include="Assets\Scripts\RoomPlacerWithTypes.cs" />
     <Compile Include="Assets\Scripts\Completed Scripts\MoveMap.cs" />
     <Compile Include="Assets\Scripts\RoomPlacer.cs" />
-    <Compile Include="Assets\Scripts\Completed Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Completed Scripts\MoveCameraInBigRooms.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
